@@ -68,3 +68,15 @@ curl https://count-things.appspot.com/example.com/foodevice/serial_number/02:42:
 $curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69
 4
 ```
+
+## Formatting the output
+You can use the query parameter `format` to specify how the number will be formatted.
+
+This should follow python's [https://docs.python.org/2/library/string.html#format-string-syntax](str.format() syntax)
+
+Examples: 
+```
+# 8 digits, hexadecimal
+$ curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69?format=0x\\{:08x\\}
+0x00000005
+```

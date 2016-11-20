@@ -32,6 +32,7 @@ def pretty_key(key):
 
 @ndb.transactional
 def get_count(namespaces, item=None):
+    fmt = request.args.get('format', '%d')
     namespace_key=None
     namespace_obj=None
     
@@ -47,7 +48,7 @@ def get_count(namespaces, item=None):
         namespace_obj.count += 1
         namespace_obj.put()
         logging.info('Counting unnamed item on namespace %s = %d', pretty_key(namespace_key), namespace_obj.count)
-        return str(namespace_obj.count)
+        return fmt.format(namespace_obj.count)
     else:
         item_key = ndb.Key(Item, item, parent=namespace_key)
         item_obj = item_key.get()
@@ -59,7 +60,7 @@ def get_count(namespaces, item=None):
             logging.info('Created item %s = %d', pretty_key(item_key), item_obj.number)
         else:
             logging.info('Existing item %s = %d', pretty_key(item_key), item_obj.number)
-        return str(item_obj.number)
+        return fmt.format(namespace_obj.count)
 
 
 @app.errorhandler(500)
