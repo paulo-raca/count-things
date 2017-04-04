@@ -14,7 +14,7 @@ Keep in mind that:
 
 To start counting, just access it's URL: 
 
-For example, on libfoo:
+For example, builds of libfoo:
 ```
 $ curl https://count-things.appspot.com/example.com/libfoo/v1.9.33/build/
 1
@@ -24,7 +24,7 @@ $ curl https://count-things.appspot.com/example.com/libfoo/v1.9.33/build
 3
 ```
 
-For example, on Foo Device:
+For example, serial numbers of Foo Device:
 ```
 $ curl https://count-things.appspot.com/example.com/foodevice/serial_number/
 1
@@ -41,9 +41,9 @@ For example, you can link your build number with the git commit hash, and your d
 
 If you use an identifier, the counter will be incremented the first time you access it, but the same value is always going to be returned afterwards.
 
-To use an identifier, just append it to the counter identifier
+To use an identifier, just append it to the end of the URL.
 
-For example, on libfoo:
+For example, builds of libfoo, based on the git commit:
 ```
 $ curl https://count-things.appspot.com/example.com/libfoo/v1.9.33/build/697ed8d03909140d95484d46d277a4e46d89b0e5
 4
@@ -57,22 +57,22 @@ $ curl https://count-things.appspot.com/example.com/libfoo/v1.9.33/build/697ed8d
 4
 ```
 
-For example, on Foo Device:
+For example, the serial number of Foo Device, based on MAC addresses:
 ```
 $ curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69
 4
 $ curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69
 4
-curl https://count-things.appspot.com/example.com/foodevice/serial_number/02:42:68:5d:68:4d 
+$ curl https://count-things.appspot.com/example.com/foodevice/serial_number/02:42:68:5d:68:4d 
 5
-$curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69
+$ $curl https://count-things.appspot.com/example.com/foodevice/serial_number/ee:9e:bd:a7:61:69
 4
 ```
 
 ## Formatting the output
 You can use the query parameter `format` to specify how the number will be formatted.
 
-This should follow python's [https://docs.python.org/2/library/string.html#format-string-syntax](str.format() syntax)
+This should follow python's [str.format() syntax](https://docs.python.org/2/library/string.html#format-string-syntax)
 
 Examples: 
 ```
