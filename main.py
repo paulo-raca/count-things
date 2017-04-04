@@ -32,7 +32,7 @@ def pretty_key(key):
 
 @ndb.transactional
 def get_count(namespaces, item=None):
-    fmt = request.args.get('format', '%d')
+    fmt = request.args.get('format', '{}')
     namespace_key=None
     namespace_obj=None
     
